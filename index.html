@@ -61,6 +61,38 @@
 				<a href="#width-measure" id="width-measure" style="color: inherit; text-decoration: none;">
 					<h1>width-measure</h1>
 				</a>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<p>Using NPM</p>
+				<pre><code class="language-bash"><span style="color: #000000">$ npm install @deprecatedluxas/width-measurer</span>
+</code></pre>
+				<p>Using Yarn</p>
+				<pre><code class="language-bash"><span style="color: #000000">$ yarn add @deprecatedluxas/width-measurer</span>
+</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">WidthMeasurer</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@deprecatedluxas/width-measurer&quot;</span><span style="color: #000000">;</span>
+
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">measure</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">WidthMeasurer</span><span style="color: #000000">({</span>
+<span style="color: #000000">    </span><span style="color: #001080">defaultOutputPath:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;./widths&quot;</span><span style="color: #000000">, </span><span style="color: #008000">// Where the width blocks will be stored.</span>
+<span style="color: #000000">});</span>
+
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">measure</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Basic Latin&quot;</span><span style="color: #000000">, {</span>
+<span style="color: #000000">    </span><span style="color: #001080">font:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;10px Verdana&quot;</span>
+<span style="color: #000000">});</span>
+<span style="color: #008000">// When creating a width block, the name of the file is the width block type and the font.</span>
+<span style="color: #008000">// example: basic-latin-10px-verdana.json</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">textWidth</span><span style="color: #000000"> = </span><span style="color: #001080">measure</span><span style="color: #000000">.</span><span style="color: #795E26">measure</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;hello&quot;</span><span style="color: #000000">, </span><span style="color: #001080">measure</span><span style="color: #000000">.</span><span style="color: #795E26">load</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;basic-latin-10px-verdana.json&quot;</span><span style="color: #000000">));</span>
+<span style="color: #008000">// returns 23.84</span>
+</code></pre>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p><a href="LICENSE">MIT</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
