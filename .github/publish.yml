@@ -1,0 +1,61 @@
+name: publish-to-npm
+
+on:
+  push:
+    branches:
+      - master
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1.4.4
+        with:
+          node-version: 12
+      - name: Install
+        run: | 
+          yarn install --frozen-lockfile
+      - name: Lint And Test
+        run: |
+          yarn lint
+          yarn test
+      - 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v1.4.4
+      with:
+        node-version: 12
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Git Configure
+      run: |
+        git config user.email "lucasnrgaard@gmail.com"
+        git config user.name "Lucas Norgaard"
+    
+    - run: yarn install --frozen-lockfile
+    - run: yarn build
+    - run: npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - uses: actions/setup-node@v1.4.4
+      with:
+        node-version: 12
+        registry-url: 'https://npm.pkg.github.com'
+    - name: Authenticate GPR
+      run:
+        echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" >
+        ~/.npmrc
+    - run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+  

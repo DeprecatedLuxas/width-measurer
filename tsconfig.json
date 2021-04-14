@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "sourceMap": false,
+        "allowJs": false,
+        "moduleResolution": "node",
+        "outDir": "./dist",
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "strict": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "allowSyntheticDefaultImports": true,
+        "lib": ["es2015", "es2016", "dom"],
+        "declaration": true
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "tests"],
+    "typedocOptions": {
+        "entryPoints": "src/index.ts",
+        "out": "docs"
+    }
+}
