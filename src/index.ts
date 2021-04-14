@@ -25,7 +25,7 @@ export class WidthMeasurer {
     ): Promise<void> {
         try {
             const puppeteer = new PuppeteerBuilder(
-                options.font ?? "10px Verdana"
+                options.font ?? "10px sans-serif"
             );
             await puppeteer.initPuppeteer();
             if (Array.isArray(unicodeBlock)) {
@@ -60,7 +60,7 @@ export class WidthMeasurer {
             console.error(error);
         }
     }
-
+    
     public load(path: string): WidthBlockObject | undefined {
         return getWidthTable(this.options.defaultOutputPath ?? "./", path);
     }
