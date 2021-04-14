@@ -106,10 +106,10 @@ export function saveWidthBlockToFile(
         const outputFolder = getOutputFolder(output); // If the folder does not exist, it creates one at the location.
 
         const outputFolderPath = path.resolve(outputFolder);
-
+        const correctFileName = getCorrectFileName(blockFileName, widthBlockObject.font)
         const outputBlockPath = path.join(
             outputFolderPath,
-            getCorrectFileName(blockFileName, widthBlockObject.font).replace(
+            correctFileName.replace(
                 /_/g,
                 "-"
             )
@@ -119,11 +119,9 @@ export function saveWidthBlockToFile(
             outputBlockPath,
             JSON.stringify(widthBlockObject, null, 2)
         );
-        console.log(
-            getUnformattedFileName(
-                getCorrectFileName(blockFileName, widthBlockObject.font)
-            )
-        );
+        console.log(`Saved ${getUnformattedFileName(
+            correctFileName
+        )} to ${outputBlockPath}`)
     } catch (error) {
         console.log(error);
     }

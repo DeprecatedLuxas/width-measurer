@@ -5,12 +5,11 @@ describe("width creation with and without array", () => {
         defaultOutputPath: "./widths",
     });
 
-    test("basic latin array creation", async () => {
+    test("latin-1 latin extended array creation", async () => {
 
         await measure.create(["Latin-1 Supplement", "Latin Extended-A"]);
-        console.log(measure.measure("hello", measure.load("latin-1-supplement-10px-verdana.json")))
-        console.log(measure.measure("Ā", measure.load("latin-extended-a-10px-verdana.json")))
-         expect("lol").toBe("lol");
+        expect(measure.measure("ö", measure.load("latin-1-supplement-10px-verdana.json"))).toBe("6.07");
+        expect(measure.measure("Āā", measure.load("latin-extended-a-10px-verdana.json"))).toBe("12.85");
      });
 
     test("basic latin creation", async () => {
