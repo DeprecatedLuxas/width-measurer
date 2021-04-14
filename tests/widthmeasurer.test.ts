@@ -19,8 +19,10 @@ describe("width creation with and without array", () => {
 
     test("basic latin creation with specific font", async () => {
         await measure.create("Basic Latin", {
-            font: "10px Verdana"
+            // On linux Verdana is called DejaVu Sans Verdana.
+            font: "10px DejaVu Sans Verdana"
         });
-        expect(measure.measure("hello", measure.load("basic-latin-10px-verdana.json"))).toBe("23.84");
+    
+        expect(measure.measure("hello", measure.load("basic-latin-10px-dejavu-sans-verdana.json"))).toBe("23.84");
     });
 });
