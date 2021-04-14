@@ -22,6 +22,6 @@ describe("width creation with and without array", () => {
             font: "10px Ubuntu Mono"
         });
     
-        expect(measure.measure("hello", measure.load("basic-latin-10px-ubuntu-mono.json"))).toBe("19.99");
+        expect(measure.measure("hello", measure.load("basic-latin-10px-ubuntu-mono.json"))).toBe("20");
     });
 });
