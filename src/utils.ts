@@ -1,5 +1,4 @@
 import * as fs from "fs";
-
 import * as path from "path";
 import { UnicodeBlock, WidthBlockObject, WidthBlock } from "./types";
 
@@ -106,22 +105,32 @@ export function saveWidthBlockToFile(
         const outputFolder = getOutputFolder(output); // If the folder does not exist, it creates one at the location.
 
         const outputFolderPath = path.resolve(outputFolder);
-        const correctFileName = getCorrectFileName(blockFileName, widthBlockObject.font)
+        const correctFileName = getCorrectFileName(
+            blockFileName,
+            widthBlockObject.font
+        );
         const outputBlockPath = path.join(
             outputFolderPath,
-            correctFileName.replace(
-                /_/g,
-                "-"
-            )
+            correctFileName.replace(/_/g, "-")
         );
-
-        fs.writeFileSync(
-            outputBlockPath,
-            JSON.stringify(widthBlockObject, null, 2)
+        const stringifiedObject: string = JSON.stringify(
+            widthBlockObject,
+            null,
+            2
         );
-        console.log(`Saved ${getUnformattedFileName(
-            correctFileName
-        )} to ${outputBlockPath}`)
+        if (fs.existsSync(outputBlockPath)) {
+            const existBlock: string = fs.readFileSync(
+                outputBlockPath,
+                "utf-8"
+            );
+            if (existBlock === stringifiedObject) return;
+        }
+        fs.writeFileSync(outputBlockPath, stringifiedObject);
+        console.log(
+            `Saved ${getUnformattedFileName(
+                correctFileName
+            )} to ${outputBlockPath}`
+        );
     } catch (error) {
         console.log(error);
     }
@@ -130,9 +139,8 @@ export function saveWidthBlockToFile(
 export function isAControlChar(widthBlock: string, charCode: number): boolean {
     if (widthBlock === "Basic Latin") {
         return charCode <= 31 || charCode === 127;
-
     } else if (widthBlock === "Latin-1 Supplement") {
-        return charCode <= 159
+        return charCode <= 159;
     }
     return false;
 }
