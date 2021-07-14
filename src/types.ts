@@ -1,4 +1,5 @@
 export interface WidthMeasurerOptions {
+    startWhenFileExists?: boolean;
     defaultOutputPath?: string;
 }
 

@@ -43,7 +43,7 @@ export function getUnicodeBlocks(
     }
 }
 
-function getCorrectFileName(blockName: string, font: string): string {
+export function getCorrectFileName(blockName: string, font: string): string {
     return `${blockName.toLowerCase()} ${font.toLowerCase()}.json`.replace(
         /\s+/gm,
         "_"
