@@ -64,6 +64,8 @@ function getOutputFolder(output: string): string {
     return output;
 }
 
+
+
 export function getWidthTable(
     output: string,
     tablePath: string

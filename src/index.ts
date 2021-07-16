@@ -104,6 +104,14 @@ export class WidthMeasurer {
         return getWidthTable(this.options.defaultOutputPath ?? "./", path);
     }
 
+    public getAvailableLoads(): string[] {
+        if (!fs.existsSync(this.options.defaultOutputPath ?? "./")) {
+            return [];
+        }
+
+        return fs.readdirSync(this.options.defaultOutputPath ?? "./");
+    }
+
     public measure(
         text: string,
         widthTable: WidthBlockObject | undefined

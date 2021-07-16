@@ -44,4 +44,8 @@ describe("width creation with and without array", () => {
             )
         ).toBe("20");
     });
+
+    test("get available loads", () => {
+        expect(Array.isArray(measure.getAvailableLoads())).toBe(true);
+    });
 });
