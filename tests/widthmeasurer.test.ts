@@ -51,7 +51,7 @@ describe("width creation with and without array", () => {
 
     test("basic latin creation with multiple fonts", async () => {
         await measure.create("Basic Latin", {
-            font: "10px Ubuntu Mono sans-serif",
+            font: "10px Ubuntu Mono, sans-serif",
         });
 
         expect(
@@ -59,6 +59,6 @@ describe("width creation with and without array", () => {
                 "hello",
                 measure.load("basic-latin-10px-ubuntu-mono-sans-serif.json")
             )
-        ).toBe("20");
+        ).toBe("21.12");
     });
 });

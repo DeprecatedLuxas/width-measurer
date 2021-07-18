@@ -45,8 +45,9 @@ export function getUnicodeBlocks(
 
 export function getCorrectFileName(blockName: string, font: string): string {
     return `${blockName.toLowerCase()} ${font.toLowerCase()}.json`
-        .replace(/\s+/gm, "_")
-        .replace(",", "");
+
+        .replace(/,\s*/gm, " ")
+        .replace(/\s+/gm, "_");
 }
 
 function getUnformattedFileName(formattedFileName: string): string {
