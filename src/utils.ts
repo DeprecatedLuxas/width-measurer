@@ -44,10 +44,9 @@ export function getUnicodeBlocks(
 }
 
 export function getCorrectFileName(blockName: string, font: string): string {
-    return `${blockName.toLowerCase()} ${font.toLowerCase()}.json`.replace(
-        /\s+/gm,
-        "_"
-    );
+    return `${blockName.toLowerCase()} ${font.toLowerCase()}.json`
+        .replace(/\s+/gm, "_")
+        .replace(",", "");
 }
 
 function getUnformattedFileName(formattedFileName: string): string {
@@ -63,8 +62,6 @@ function getOutputFolder(output: string): string {
     }
     return output;
 }
-
-
 
 export function getWidthTable(
     output: string,

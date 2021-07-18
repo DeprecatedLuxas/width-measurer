@@ -48,4 +48,17 @@ describe("width creation with and without array", () => {
     test("get available loads", () => {
         expect(Array.isArray(measure.getAvailableLoads())).toBe(true);
     });
+
+    test("basic latin creation with multiple fonts", async () => {
+        await measure.create("Basic Latin", {
+            font: "10px Ubuntu Mono sans-serif",
+        });
+
+        expect(
+            measure.measure(
+                "hello",
+                measure.load("basic-latin-10px-ubuntu-mono-sans-serif.json")
+            )
+        ).toBe("20");
+    });
 });
